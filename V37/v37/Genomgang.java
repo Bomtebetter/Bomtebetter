@@ -26,7 +26,7 @@ public class Genomgang {
 		
 		long storthelTal = 100000000000000000L;
 		
-		System.out.println(stotheheltal+1);
+		System.out.println(storthelTal+1);
 	}
 
 }
