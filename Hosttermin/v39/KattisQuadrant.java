@@ -13,16 +13,16 @@ public class KattisQuadrant {
 		heltal2 = input.nextInt();
 		
 		if(heltal1 >= 0 && heltal2 >= 0) {
-			System.out.println("quadrant 1;" + heltal1 + "," + heltal2);
+			System.out.println("1");
 		}
 		else if (heltal1 <= 0 && heltal2 >=0) {
-			System.out.println("quadrant 2:" + heltal1 + "," + heltal2);
+			System.out.println("2");
 		}
 		else if (heltal1 <= 0 && heltal2 <=0) {
-			System.out.println("quadrant 3:" + heltal1 + "," + heltal2);
+			System.out.println("3");
 		}
 		else if (heltal1 >= 0 && heltal2 <=0) {
-			System.out.println("quadrant 4:" + heltal1 + "," + heltal2);
+			System.out.println("4");
 		}
 		
 	}
