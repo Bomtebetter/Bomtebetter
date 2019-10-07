@@ -7,12 +7,12 @@ public class Uppgift2 {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		 int heltal = input.nextInt();
-		 int sum = 0;
+		 int summa = 0;
 		 while (heltal > 0) {
-			 sum = sum + heltal % 10;
+			 summa = summa + heltal % 10;
 			 heltal = heltal / 10;
 		 }
-		 System.out.println(sum);
+		 System.out.println(summa);
 	}
 
 }
