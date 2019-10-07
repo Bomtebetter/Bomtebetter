@@ -12,16 +12,16 @@ public class Fizzbuzz {
 		
 		for (int i = 1; i <= heltal3; i++) {
 			if (i % heltal1 == 0 && i % heltal2 == 0) {
-				System.out.println("FizzBuzz");
+				System.out.println("FizzBuzz"); //gör saker
 			}
 			else if (i % heltal1== 0) {
-				System.out.println("Fizz");
+				System.out.println("Fizz"); //gör också saker
 			}
 			else if (i % heltal2== 0) {
-				System.out.println("Buzz");
-			}
+				System.out.println("Buzz"); //gör andra saker
+			} 
 			else {
-				System.out.println(i);
+				System.out.println(i); //skriver ut saker
 			}
 		}
 		
