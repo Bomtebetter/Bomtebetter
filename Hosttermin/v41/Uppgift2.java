@@ -9,7 +9,7 @@ public class Uppgift2 {
 		 int heltal = input.nextInt();
 		 int summa = 0;
 		 while (heltal > 0) {
-			 summa = summa + heltal % 10;
+			 summa += heltal % 10;
 			 heltal = heltal / 10;
 		 }
 		 System.out.println(summa);
