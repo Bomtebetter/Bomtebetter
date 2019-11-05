@@ -19,11 +19,8 @@ public class Monday {
 
 			if (age >= 18) {
 				System.out.println("Köra bil och moped");
-
 			}
 			else if (age > 14 && age < 18) {System.out.println("Inte köra bil bara moped");}
-
-
 			else System.out.println("Du är en liten plutt");
 
 
