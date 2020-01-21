@@ -8,7 +8,8 @@ public class BubbleChoice {
 		Scanner input = new Scanner(System.in);
 		int[] numbers;
 		int antTal = input.nextInt();
-				
+
+		
 		
 		
 	}
