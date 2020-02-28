@@ -4,6 +4,7 @@
 	<classpathentry kind="src" path="Hosttermin"/>
 	<classpathentry kind="src" path="v51"/>
 	<classpathentry kind="src" path="VarTermin"/>
+	<classpathentry kind="src" path="NumberGame"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
