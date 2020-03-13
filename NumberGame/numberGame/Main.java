@@ -7,10 +7,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		boolean start = true;
 		String diffPicker;
-		int hiddenNumber;
 		String guess;
+		int hiddenNumber;
+		boolean start = true;
 
 		do {
 			intro();
@@ -18,44 +18,42 @@ public class Main {
 			int choose = (int) Long.parseLong(diffPicker); // sätter antalet gissningar man har max
 			int sad = (int) Long.parseLong(diffPicker); // initierar sad som håller koll på hur många gissningar som man har kvar
 			hiddenNumber = randomGenerator();
+			System.out.println("Have fun! :)");
 			for (int i = 0; i < choose;) {
 				guess = input.nextLine(); // Tar in gissning från konsollen.
-				if (guess.matches("^\\w{0,3}$")) { // gör så att den bara tar emot gissningar som är 3 tecken långa.
-					if (guess.matches("^[0-9]+$")) { // kollar via regex ifall .nextLine är inskrivet ett tal | + gör så den kan läsa flera tal
-						int gissning = (int) Long.parseLong(guess);// Tar och gör om gissningen först till en Long och sedan en int
-						if (gissning <= 100) {
-							System.out.println("You guessed number: " + gissning);
-							sad--;
-							i++;
-							if (gissning == hiddenNumber) { // jämför gissningen med det hemliga numret
-								System.out.println("You won with " + sad + " guesses remaining!");
-								System.out.println("Do you want to play again? Write 1 to play again. Write something else to exit");
-								playAgain(start);
-							} else if (i == choose) { // jämför gissningen med det hemliga numret
-								System.out.println("\n" + "You lost! The number was " + hiddenNumber + "!");
-								System.out.println("Do you want to play again? Write 1 to play again. Write something else to exit");
-								playAgain(start);
-							} else if (gissning > hiddenNumber) { // jämför gissningen med det hemliga numret
-								System.out.println("The hidden number is smaller than you guessed!");
-								System.out.println("You have " + sad + " guesses remaining");
-							} else if (gissning < hiddenNumber) {// jämför gissningen med det hemliga numret
-								System.out.println("The hidden number is bigger than you guessed!");
-								System.out.println("You have " + sad + " guesses remaining");
-							}
-						} else if (gissning > 100) {
-							System.out.println("The integer needs in the interval of 1-100");
+				if (guess.matches("^[0-9]+\\w{0,3}$")) { // kollar via regex [0-9] ifall .nextLine är inskrivet ett tal. 
+					// + gör så kollar varje tecken och w{0-3} gör så att den bara tar emot gissningar som är 3 tecken långa.
+					int gissning = (int) Long.parseLong(guess);// Tar och gör om gissningen först till en Long och sedan en int
+					if (gissning <= 100) {
+						System.out.println("You guessed number: " + gissning);
+						sad--;
+						i++;
+						if (gissning == hiddenNumber) { // jämför gissningen med det hemliga numret
+							System.out.println("You won with " + sad + " guesses remaining!");
+							System.out.println("Do you want to play again? Write 1 to play again. Write something else to exit");
+							playAgain(start);
+						} else if (i == choose) { // jämför gissningen med det hemliga numret
+							System.out.println("\n" + "You lost! The number was " + hiddenNumber + "!");
+							System.out.println("Do you want to play again? Write 1 to play again. Write something else to exit");
+							playAgain(start);
+						} else if (gissning > hiddenNumber) { // jämför gissningen med det hemliga numret
+							System.out.println("The hidden number is smaller than you guessed!");
+							System.out.println("You have " + sad + " guesses remaining");
+						} else if (gissning < hiddenNumber) {// jämför gissningen med det hemliga numret
+							System.out.println("The hidden number is bigger than you guessed!");
+							System.out.println("You have " + sad + " guesses remaining");
 						}
-					} else if (guess.contains(" ") && guess.contains("-")) {
-						System.out.println("Please write a positive integer with no spaces");
-					} else if (guess.contains(" ")) {
-						System.out.println("Please write an integer with no spaces");
-					} else if (guess.contains("-")) {
-						System.out.println("Please write a positive integer");
-					} else {
-						System.out.println("Please write an integer");
+					} else if (gissning > 100) {
+						System.out.println("The integer needs in the interval of 1-100");
 					}
+				} else if (guess.contains(" ") && guess.contains("-")) {
+					System.out.println("Please write a positive integer with no spaces");
+				} else if (guess.contains(" ")) {
+					System.out.println("Please write an integer with no spaces");
+				} else if (guess.contains("-")) {
+					System.out.println("Please write a positive integer");
 				} else {
-					System.out.println("Please write betweeen 1-100");
+					System.out.println("Please write an integer");
 				}
 			}
 		} while (start == true);
@@ -67,10 +65,11 @@ public class Main {
 	private static void intro() {
 		System.out.println("Welcome to guess the number!");
 		System.out.println("Your goal is to guess the number generated between 1 and 100.");
-		System.out.println("Pick a difficulty! Write 1 to get normal, 2 for hard, lastly 3 for extreme.");
+		System.out.println("Pick a difficulty! Write 1 to get normal, 2 for hard, 3 for extreme, lastly 4 if you want to choose yourself :) ");
 		System.out.println("(1) Normal 15 guesses");
 		System.out.println("(2) Hard 5 guesses");
 		System.out.println("(3) Extreme 3 guesses");
+		System.out.println("(4) Choose how many guesses");
 	}
 
 	/**
@@ -86,7 +85,7 @@ public class Main {
 
 	/**
 	 * Tar in diffpicker som är ett tal som spelaren matar in i konsollen och jämför
-	 * med 1 och två Sedan ger den en svårighetsgrad beroende på vad som matades in.
+	 * och Sedan ger den en svårighetsgrad beroende på vad som matades in.
 	 * 
 	 * @param diffPicker
 	 * @return Chosen
@@ -95,18 +94,37 @@ public class Main {
 		Scanner input = new Scanner(System.in);
 		String difficulty = "1";
 		String diffPicker = input.nextLine();
-		if (diffPicker.equalsIgnoreCase("1")) {
-			difficulty = "15";
-			System.out.println("You went with normal difficulty");
-		} else if (diffPicker.equalsIgnoreCase("2")) {
-			difficulty = "5";
-			System.out.println("You went with hard difficulty");
-		} else if (diffPicker.equalsIgnoreCase("3")) {
-			difficulty = "3";
-			System.out.println("You went with Extreme difficulty");
-		} else {
-			difficulty = "1";
-			System.out.println("Since you didnt follow my instructions you'll only get 1 guesses");
+		boolean eh = true;
+		if(eh = true) {
+			if (diffPicker.equalsIgnoreCase("1")) {
+				eh = false;
+				difficulty = "15";
+				System.out.println("You went with normal difficulty");
+			} else if (diffPicker.equalsIgnoreCase("2")) {
+				eh = false;
+				difficulty = "5";
+				System.out.println("You went with hard difficulty");
+			} else if (diffPicker.equalsIgnoreCase("3")) {
+				eh = false;
+				difficulty = "3";
+				System.out.println("You went with Extreme difficulty");
+			} else if (diffPicker.equalsIgnoreCase("4")) {
+				System.out.println("Pick how many guesses you want :)");
+				difficulty = input.nextLine();
+				if (difficulty.matches("^[0-9]+\\d{0,3}$")) {
+					System.out.println("You have " + difficulty + " guesses");
+					eh = false;
+				} else { 
+					difficulty = "1";
+					System.out.println("Since you didnt follow my instructions you'll only get 1 guesses");
+					eh = false;
+					}
+			} else {
+				difficulty = "1";
+				System.out.println("Since you didnt follow my instructions you'll only get 1 guesses");
+				eh = false;
+			}
+			eh = false;
 		}
 		return difficulty;
 	}
